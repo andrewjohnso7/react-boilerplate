@@ -1,4 +1,5 @@
 import React from 'react';
+import StringForm from '../StringForm';
 
 class StringDisplay extends React.Component {
   constructor(props) {
@@ -30,9 +31,7 @@ class StringDisplay extends React.Component {
               <li>{item}</li>
             ))}
           </ul>
-          <button type="button" onClick={this.fetchAllStrings}>
-            Fetch Strings
-          </button>
+          <StringForm />
         </div>
       </div>
     );
