@@ -12,15 +12,25 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
+const bodyparser = require('body-parser');
 const app = express();
+// added bodyparser to add the of the request directly to the string
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+const strings = ['Aang', 'Katara', 'Toph', 'Sokka', 'Appa'];
 
 app.get('/api/getStrings', (req, res) => {
-  const strings = ['Aang', 'Katara', 'Toph', 'Sokka', 'Appa'];
   res.send(JSON.stringify(strings));
   console.log('Sent list of items');
+});
+
+app.post('/api/addString', (req, res) => {
+  console.log('got it: ', req.body);
+  strings.unshift(req.body.body);
+  res.send(JSON.stringify(strings));
 });
 
 // In production we need to pass these values in instead of relying on webpack
