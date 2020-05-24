@@ -28,7 +28,7 @@ class StringDisplay extends React.Component {
           These are the strings
           <ul>
             {this.state.strings.map(item => (
-              <li>{item}</li>
+              <li key={item.id}>{item.body}</li>
             ))}
           </ul>
           <button type="button">
