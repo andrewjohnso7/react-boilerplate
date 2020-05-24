@@ -20,16 +20,28 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
-const strings = ['Aang', 'Katara', 'Toph', 'Sokka', 'Appa'];
+// const strings = ['Aang', 'Katara', 'Toph', 'Sokka', 'Appa'];
+const strings = [
+  { id: 5, body: 'Aang' },
+  { id: 4, body: 'Katara' },
+  { id: 3, body: 'Toph' },
+  { id: 2, body: 'Sokka' },
+  { id: 1, body: 'Appa' },
+];
+
+let id = 6;
 
 app.get('/api/getStrings', (req, res) => {
   res.send(JSON.stringify(strings));
-  console.log('Sent list of items');
+  console.log('Sent list of items', strings);
 });
 
 app.post('/api/addString', (req, res) => {
-  console.log('got it: ', req.body);
-  strings.unshift(req.body.body);
+  id += 1;
+  strings.unshift({
+    id,
+    body: req.body.body,
+  });
   res.send(JSON.stringify(strings));
 });
 
