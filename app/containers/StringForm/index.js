@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class StringForm extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class StringForm extends React.Component {
     })
       // This won't be necessary for Redux
       .then(res => res.json())
-      .then(body => console.log(body))
+      .then(this.setState({ body: '' }))
       .catch(error => console.log('We Broke it again: ', error));
   };
 
@@ -39,7 +40,7 @@ class StringForm extends React.Component {
         <h1>Add String</h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label htmlFor="body">Body: </label>
+            <label htmlFor="New String">New String: </label>
             <br />
             <textarea
               name="body"
@@ -48,8 +49,12 @@ class StringForm extends React.Component {
             />
           </div>
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit">Add string</button>
         </form>
+        <br />
+        <button type="button">
+          <Link to="/">See List of Strings</Link>
+        </button>
       </div>
     );
   }

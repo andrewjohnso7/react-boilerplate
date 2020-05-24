@@ -1,5 +1,5 @@
 import React from 'react';
-import StringForm from '../StringForm';
+import { Link } from 'react-router-dom';
 
 class StringDisplay extends React.Component {
   constructor(props) {
@@ -31,7 +31,9 @@ class StringDisplay extends React.Component {
               <li>{item}</li>
             ))}
           </ul>
-          <StringForm />
+          <button type="button">
+            <Link to="/addString">Add another string</Link>
+          </button>
         </div>
       </div>
     );

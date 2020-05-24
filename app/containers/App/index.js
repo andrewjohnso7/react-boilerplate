@@ -16,12 +16,14 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import GlobalStyle from '../../global-styles';
 
 import StringDisplay from '../StringDisplay';
+import StringForm from '../StringForm';
 
 export default function App() {
   return (
     <div>
       <Switch>
         <Route exact path="/" component={StringDisplay} />
+        <Route path="/addString" component={StringForm} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
