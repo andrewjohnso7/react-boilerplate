@@ -30,7 +30,11 @@ class StringForm extends React.Component {
     })
       // This won't be necessary for Redux
       .then(res => res.json())
-      .then(this.setState({ body: '' }))
+      .then(
+        this.setState({
+          body: '',
+        }),
+      )
       .catch(error => console.log('We Broke it again: ', error));
   };
 
