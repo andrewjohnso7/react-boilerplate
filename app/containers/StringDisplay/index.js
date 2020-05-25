@@ -1,14 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import { getSelectorStrings } from './selectors';
 import { FETCH_STRINGS } from './constants';
 
-const getStrings = () => ({ type: FETCH_STRINGS });
-
 class StringDisplay extends React.Component {
+  static propTypes = {
+    fetchStrings: PropTypes.func.isRequired,
+    strings: PropTypes.shape({
+      list: PropTypes.array.isRequired,
+    }),
+  };
+
   componentDidMount() {
-    this.props.getStrings();
+    this.props.fetchStrings();
   }
 
   render() {
@@ -18,7 +24,7 @@ class StringDisplay extends React.Component {
         <div>
           These are the strings
           <ul>
-            {this.props.strings.strings.map(item => (
+            {this.props.strings.list.map(item => (
               <li key={item.id}>{item.body}</li>
             ))}
           </ul>
@@ -36,7 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getStrings,
+  fetchStrings: () => ({ type: FETCH_STRINGS }),
 };
 
 export default connect(
