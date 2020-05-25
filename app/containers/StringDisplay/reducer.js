@@ -3,7 +3,7 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
   UPDATING_STRINGS,
-  UPDATE_ADDED,
+  UPDATE_SUCCESS,
   UPDATE_FAILED,
 } from './constants';
 
