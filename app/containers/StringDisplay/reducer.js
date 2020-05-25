@@ -8,7 +8,7 @@ import {
 } from './constants';
 
 const initialState = {
-  strings: [
+  list: [
     { id: 5, body: 'Aang' },
     { id: 4, body: 'Katara' },
     { id: 3, body: 'Toph' },
@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
     case FETCH_SUCCESS: {
       return {
         ...state,
-        strings: action.strings,
+        list: action.list,
       };
     }
     case UPDATING_STRINGS: {
