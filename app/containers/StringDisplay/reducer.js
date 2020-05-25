@@ -1,4 +1,11 @@
-import { FETCH_STRINGS, API_SUCCESS, API_FAILURE } from './constants';
+import {
+  FETCH_STRINGS,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  UPDATING_STRINGS,
+  UPDATE_ADDED,
+  UPDATE_FAILED,
+} from './constants';
 
 const initialState = {
   strings: [
@@ -14,14 +21,18 @@ export default function(state = initialState, action) {
   console.log('in the reducer ', action, state);
   switch (action.type) {
     case FETCH_STRINGS:
-      console.log('Fetching them strings');
       return {
         ...state,
       };
-    case API_SUCCESS: {
+    case FETCH_SUCCESS: {
       return {
         ...state,
-        items: action.payload,
+        strings: action.strings,
+      };
+    }
+    case UPDATING_STRINGS: {
+      return {
+        ...state,
       };
     }
     default:
