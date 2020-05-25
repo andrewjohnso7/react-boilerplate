@@ -1,13 +1,5 @@
-import { FETCH_STRINGS } from './constants';
-export const fetchStrings = () => dispatch => {
+export const fetchStrings = () =>
   fetch(`api/getStrings`)
     .then(res => res.json())
-    .then(strings =>
-      dispatch({
-        type: FETCH_STRINGS,
-        payload: strings,
-      }),
-    )
-    .then(console.log('We made it'))
+    .then(data => console.log('give this to the reducer', data))
     .catch(error => console.log('Something Broke ', error));
-};
