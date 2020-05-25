@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getSelectorStrings } from './selectors';
 import { FETCH_STRINGS } from './constants';
 
 const getStrings = () => ({ type: FETCH_STRINGS });
@@ -30,10 +31,9 @@ class StringDisplay extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { strings } = state;
-  return { strings };
-};
+const mapStateToProps = state => ({
+  strings: getSelectorStrings(state),
+});
 
 const mapDispatchToProps = {
   getStrings,
