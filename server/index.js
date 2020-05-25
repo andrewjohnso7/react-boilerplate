@@ -27,6 +27,7 @@ const strings = [
   { id: 3, body: 'Toph' },
   { id: 2, body: 'Sokka' },
   { id: 1, body: 'Appa' },
+  { id: 0, body: 'Momo' },
 ];
 
 let id = 6;
