@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { UPDATING_STRINGS } from '../StringDisplay/constants';
 
-const addString = payload => ({
-  type: UPDATING_STRINGS,
-  payload,
-});
-
 class StringForm extends React.Component {
+  static propTypes = {
+    addString: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -29,6 +29,8 @@ class StringForm extends React.Component {
     };
 
     this.props.addString(post);
+
+    this.setState({ body: '' });
   };
 
   render() {
@@ -58,7 +60,10 @@ class StringForm extends React.Component {
 }
 
 const mapDispatchToProps = {
-  addString,
+  addString: payload => ({
+    type: UPDATING_STRINGS,
+    payload,
+  }),
 };
 
 export default connect(
