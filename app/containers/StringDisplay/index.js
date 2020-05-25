@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FETCH_STRINGS } from './constants';
 
-const getStrings = () => ({ type: 'FETCH_STRINGS' });
+const getStrings = () => ({ type: FETCH_STRINGS });
 
 class StringDisplay extends React.Component {
   componentDidMount() {
     this.props.getStrings();
-    console.log('Component Mounted');
   }
 
   render() {
-    console.log('the props', this.props);
     return (
       <div>
         Hello
@@ -31,7 +30,7 @@ class StringDisplay extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const { strings } = state;
   return { strings };
 };
