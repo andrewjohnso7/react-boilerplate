@@ -1,33 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+const getStrings = () => ({ type: 'FETCH_STRINGS' });
+
 class StringDisplay extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      strings: [],
-    };
-  }
-
   componentDidMount() {
-    this.fetchAllStrings();
+    this.props.getStrings();
+    console.log('Component Mounted');
   }
-
-  fetchAllStrings = () => {
-    fetch(`api/getStrings`)
-      .then(res => res.json())
-      .then(strings => this.setState({ strings }))
-      .catch(error => console.log('Something Broke ', error));
-  };
 
   render() {
+    console.log('the props', this.props);
     return (
       <div>
         Hello
         <div>
           These are the strings
           <ul>
-            {this.state.strings.map(item => (
+            {this.props.strings.strings.map(item => (
               <li key={item.id}>{item.body}</li>
             ))}
           </ul>
@@ -40,4 +31,16 @@ class StringDisplay extends React.Component {
   }
 }
 
-export default StringDisplay;
+const mapStateToProps = (state, ownProps) => {
+  const { strings } = state;
+  return { strings };
+};
+
+const mapDispatchToProps = {
+  getStrings,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StringDisplay);
