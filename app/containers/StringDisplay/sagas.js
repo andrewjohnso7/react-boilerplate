@@ -11,8 +11,8 @@ import {
 
 export function* fetchAllStrings() {
   try {
-    const strings = yield call(fetchStrings);
-    yield put({ type: FETCH_SUCCESS, strings });
+    const list = yield call(fetchStrings);
+    yield put({ type: FETCH_SUCCESS, list });
   } catch (error) {
     yield put({ type: FETCH_FAILURE, error });
   }
