@@ -1,5 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { UPDATING_STRINGS } from '../StringDisplay/constants';
+
+const addString = payload => ({
+  type: UPDATING_STRINGS,
+  payload,
+});
 
 class StringForm extends React.Component {
   constructor(props) {
@@ -21,21 +28,7 @@ class StringForm extends React.Component {
       body: this.state.body,
     };
 
-    fetch(`/api/addString`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(post),
-    })
-      // This won't be necessary for Redux
-      .then(res => res.json())
-      .then(
-        this.setState({
-          body: '',
-        }),
-      )
-      .catch(error => console.log('We Broke it again: ', error));
+    this.props.addString(post);
   };
 
   render() {
@@ -64,4 +57,11 @@ class StringForm extends React.Component {
   }
 }
 
-export default StringForm;
+const mapDispatchToProps = {
+  addString,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(StringForm);
