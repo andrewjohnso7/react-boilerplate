@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { UPDATING_STRINGS } from '../StringDisplay/constants';
 
-class StringForm extends React.Component {
+export class StringForm extends React.Component {
   static propTypes = {
     addString: PropTypes.func.isRequired,
   };
@@ -59,7 +59,7 @@ class StringForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   addString: payload => ({
     type: UPDATING_STRINGS,
     payload,
