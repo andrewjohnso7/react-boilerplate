@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { UPDATING_STRINGS } from '../StringDisplay/constants';
+import {
+  MainContainer,
+  Section,
+  StringNavigation,
+  SubmitString,
+  FormContainer,
+  TextArea,
+} from '../StringDisplay/styled';
 
 export class StringForm extends React.Component {
   static propTypes = {
@@ -27,34 +34,41 @@ export class StringForm extends React.Component {
     const post = {
       body: this.state.body,
     };
-
-    this.props.addString(post);
-
-    this.setState({ body: '' });
+    if (
+      post.body &&
+      post.body !== 'Please enter a string' &&
+      post.body.length > 0
+    ) {
+      this.props.addString(post);
+      this.setState({ body: '' });
+    } else {
+      this.setState({ body: 'Please enter a string' });
+    }
   };
 
   render() {
     return (
-      <div>
-        <h1>Add String</h1>
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <label htmlFor="New String">New String: </label>
-            <br />
-            <textarea
-              name="body"
-              value={this.state.body}
-              onChange={this.onChange}
-            />
-          </div>
+      <MainContainer>
+        <Section>
+          <h1>Add a Name</h1>
+          <form onSubmit={this.onSubmit}>
+            <FormContainer>
+              <label htmlFor="New String">Enter name here: </label>
+              <br />
+              <TextArea
+                placeholder={this.state.body || "What's your name?"}
+                name="body"
+                value={this.state.body}
+                onChange={this.onChange}
+              />
+              <br />
+              <SubmitString type="submit">Add name</SubmitString>
+            </FormContainer>
+          </form>
           <br />
-          <button type="submit">Add string</button>
-        </form>
-        <br />
-        <button type="button">
-          <Link to="/">See List of Strings</Link>
-        </button>
-      </div>
+          <StringNavigation to="/">See list of names</StringNavigation>
+        </Section>
+      </MainContainer>
     );
   }
 }
