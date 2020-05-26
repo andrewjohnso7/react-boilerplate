@@ -1,11 +1,4 @@
-import {
-  FETCH_STRINGS,
-  FETCH_SUCCESS,
-  FETCH_FAILURE,
-  UPDATING_STRINGS,
-  UPDATE_SUCCESS,
-  UPDATE_FAILED,
-} from './constants';
+import { FETCH_STRINGS, FETCH_SUCCESS } from './constants';
 
 const initialState = {
   list: [
@@ -18,7 +11,6 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log('in the reducer ', action, state);
   switch (action.type) {
     case FETCH_STRINGS:
       return {
@@ -28,11 +20,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         list: action.list,
-      };
-    }
-    case UPDATING_STRINGS: {
-      return {
-        ...state,
       };
     }
     default:

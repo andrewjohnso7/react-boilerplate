@@ -1,7 +1,7 @@
 export const fetchStrings = () =>
   fetch(`api/getStrings`)
     .then(res => res.json())
-    .catch(error => console.log('Something Broke ', error));
+    .catch(error => error);
 
 export const updateStrings = post =>
   fetch(`/api/addString`, {
@@ -12,4 +12,4 @@ export const updateStrings = post =>
     body: JSON.stringify(post),
   })
     .then(res => res.json())
-    .catch(error => console.log('We Broke it again: ', error));
+    .catch(error => error);

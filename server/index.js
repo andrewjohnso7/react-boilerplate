@@ -34,7 +34,6 @@ let id = 6;
 
 app.get('/api/getStrings', (req, res) => {
   res.send(JSON.stringify(strings));
-  console.log('Sent list of items', strings);
 });
 
 app.post('/api/addString', (req, res) => {

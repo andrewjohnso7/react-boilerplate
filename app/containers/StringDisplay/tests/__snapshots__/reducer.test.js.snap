@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetchStringsReducer handles the FETCH_STRINGS action 1`] = `Object {}`;
+
+exports[`fetchStringsReducer handles the FETCH_SUCCESS action 1`] = `Object {}`;
+
+exports[`fetchStringsReducer returns the initial state 1`] = `
+Object {
+  "list": Array [
+    Object {
+      "body": "Aang",
+      "id": 5,
+    },
+    Object {
+      "body": "Katara",
+      "id": 4,
+    },
+    Object {
+      "body": "Toph",
+      "id": 3,
+    },
+    Object {
+      "body": "Sokka",
+      "id": 2,
+    },
+    Object {
+      "body": "Appa",
+      "id": 1,
+    },
+  ],
+}
+`;
