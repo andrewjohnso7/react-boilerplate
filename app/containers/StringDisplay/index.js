@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { getSelectorStrings } from './selectors';
 import { FETCH_STRINGS } from './constants';
+import { Section, Title, List, MainContainer, AddString } from './styled';
 
 class StringDisplay extends React.Component {
   static propTypes = {
@@ -19,20 +19,18 @@ class StringDisplay extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello
-        <div>
+      <MainContainer>
+        <Title>DMI Tech Screen</Title>
+        <Section>
           These are the strings
-          <ul>
+          <List>
             {this.props.strings.list.map(item => (
               <li key={item.id}>{item.body}</li>
             ))}
-          </ul>
-          <button type="button">
-            <Link to="/addString">Add another string</Link>
-          </button>
-        </div>
-      </div>
+          </List>
+          <AddString to="/addString">Add another string</AddString>
+        </Section>
+      </MainContainer>
     );
   }
 }
