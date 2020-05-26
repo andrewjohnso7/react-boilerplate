@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getSelectorStrings } from './selectors';
 import { FETCH_STRINGS } from './constants';
-import { Section, Title, List, MainContainer, AddString } from './styled';
+import {
+  Section,
+  Title,
+  List,
+  MainContainer,
+  StringNavigation,
+} from './styled';
 
 class StringDisplay extends React.Component {
   static propTypes = {
@@ -22,13 +28,13 @@ class StringDisplay extends React.Component {
       <MainContainer>
         <Title>DMI Tech Screen</Title>
         <Section>
-          These are the strings
+          These are the names
           <List>
             {this.props.strings.list.map(item => (
               <li key={item.id}>{item.body}</li>
             ))}
           </List>
-          <AddString to="/addString">Add another string</AddString>
+          <StringNavigation to="/addString">Add another name</StringNavigation>
         </Section>
       </MainContainer>
     );
@@ -37,6 +43,7 @@ class StringDisplay extends React.Component {
 
 const mapStateToProps = state => ({
   strings: getSelectorStrings(state),
+  fontSize: true,
 });
 
 const mapDispatchToProps = {
