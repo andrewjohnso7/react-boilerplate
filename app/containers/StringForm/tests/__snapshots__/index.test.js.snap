@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StringForm component <StringForm /> renders and matches the snapshot 1`] = `
+<main
+  class="styled__MainContainer-sc-1lglkjr-0 kEBlae"
+>
+  <section
+    class="styled__Section-sc-1lglkjr-1 mSDmX"
+  >
+    <h1>
+      Add a Name
+    </h1>
+    <form>
+      <div
+        class="styled__FormContainer-sc-1lglkjr-4 cXQrbI"
+      >
+        <label
+          for="New String"
+        >
+          Enter name here: 
+        </label>
+        <br />
+        <textarea
+          class="styled__TextArea-sc-1lglkjr-7 dYlekZ"
+          name="body"
+          placeholder="What's your name?"
+        />
+        <br />
+        <button
+          class="styled__SubmitString-sc-1lglkjr-6 dHdrXc"
+          type="submit"
+        >
+          Add name
+        </button>
+      </div>
+    </form>
+    <br />
+    <a
+      class="styled__StringNavigation-sc-1lglkjr-5 kZlXKg"
+      href="/"
+    >
+      See list of names
+    </a>
+  </section>
+</main>
+`;
