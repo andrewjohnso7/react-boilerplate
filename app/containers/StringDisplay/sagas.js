@@ -24,10 +24,10 @@ export function* watchFetchStrings() {
 
 export function* addNewString(action) {
   try {
-    const newString = yield updateStrings(action.payload);
-    yield put({ type: UPDATE_SUCCESS, newString });
+    const updated = yield updateStrings(action.payload);
+    yield put({ type: UPDATE_SUCCESS, updated });
   } catch (error) {
-    yield put({ type: UPDATE_FAILED });
+    yield put({ type: UPDATE_FAILED, error });
   }
 }
 

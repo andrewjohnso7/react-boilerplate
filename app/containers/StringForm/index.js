@@ -14,6 +14,10 @@ import {
 export class StringForm extends React.Component {
   static propTypes = {
     addString: PropTypes.func.isRequired,
+    added: PropTypes.shape({
+      id: PropTypes.number,
+      body: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    }),
   };
 
   constructor(props) {
@@ -47,6 +51,7 @@ export class StringForm extends React.Component {
   };
 
   render() {
+    const { added } = this.props;
     return (
       <MainContainer>
         <Section>
@@ -66,12 +71,23 @@ export class StringForm extends React.Component {
             </FormContainer>
           </form>
           <br />
+          {added ? (
+            <div>{added.body} successfully added to the list</div>
+          ) : (
+            <div>Sorry, please attempt to enter a string again</div>
+          )}
+          <br />
           <StringNavigation to="/">See list of names</StringNavigation>
         </Section>
       </MainContainer>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  added: state.strings.added,
+  error: state.strings.error,
+});
 
 export const mapDispatchToProps = {
   addString: payload => ({
@@ -81,6 +97,6 @@ export const mapDispatchToProps = {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(StringForm);
