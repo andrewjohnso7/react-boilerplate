@@ -42,7 +42,7 @@ app.post('/api/addString', (req, res) => {
     id,
     body: req.body.body,
   });
-  res.send(JSON.stringify(strings));
+  res.send(JSON.stringify(strings[0]));
 });
 
 // In production we need to pass these values in instead of relying on webpack
