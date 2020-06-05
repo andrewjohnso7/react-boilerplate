@@ -17,7 +17,12 @@ exports[`StringForm component <StringForm /> renders and matches the snapshot 1`
         <label
           for="New String"
         >
-          Enter name here: 
+          <br />
+          <div>
+            Please attempt to enter a string
+          </div>
+          <br />
+           
         </label>
         <br />
         <textarea
