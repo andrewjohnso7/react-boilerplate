@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects';
-import { fetchStrings, updateStrings } from './actions';
+import { fetchStrings, updateStrings } from './requests';
 import {
   FETCH_STRINGS,
   FETCH_SUCCESS,

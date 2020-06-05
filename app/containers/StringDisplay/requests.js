@@ -1,7 +1,7 @@
 export const fetchStrings = () =>
   fetch(`api/getStrings`)
     .then(res => res.json())
-    .catch(error => error);
+    .catch(error => `Oops ${error}`);
 
 export const updateStrings = post =>
   fetch(`/api/addString`, {
