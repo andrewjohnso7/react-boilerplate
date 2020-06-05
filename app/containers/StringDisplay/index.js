@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getSelectorStrings } from './selectors';
-import { FETCH_STRINGS } from './constants';
+import { fetchStrings } from './actionCreators';
 import {
   Section,
   Title,
@@ -15,7 +15,8 @@ class StringDisplay extends React.Component {
   static propTypes = {
     fetchStrings: PropTypes.func.isRequired,
     strings: PropTypes.shape({
-      list: PropTypes.array.isRequired,
+      list: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+      error: PropTypes.string,
     }),
   };
 
@@ -24,6 +25,14 @@ class StringDisplay extends React.Component {
   }
 
   render() {
+    const { error } = this.props.strings;
+    if (error != null) {
+      return (
+        <MainContainer>
+          <Title>There was an error, please try again</Title>
+        </MainContainer>
+      );
+    }
     return (
       <MainContainer>
         <Title>DMI Tech Screen</Title>
@@ -47,7 +56,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchStrings: () => ({ type: FETCH_STRINGS }),
+  fetchStrings,
 };
 
 export default connect(
