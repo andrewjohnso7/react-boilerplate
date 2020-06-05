@@ -1,4 +1,9 @@
-import { FETCH_STRINGS, FETCH_SUCCESS } from './constants';
+import {
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  UPDATE_FAILED,
+  UPDATE_SUCCESS,
+} from './constants';
 
 const initialState = {
   list: [
@@ -12,14 +17,28 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_STRINGS:
-      return {
-        ...state,
-      };
     case FETCH_SUCCESS: {
       return {
         ...state,
         list: action.list,
+      };
+    }
+    case FETCH_FAILURE: {
+      return {
+        ...state,
+        error: action.error,
+      };
+    }
+    case UPDATE_SUCCESS: {
+      return {
+        ...state,
+        added: action.updated,
+      };
+    }
+    case UPDATE_FAILED: {
+      return {
+        ...state,
+        error: action.error,
       };
     }
     default:
